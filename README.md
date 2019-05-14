@@ -50,7 +50,7 @@ Things you may want to cover:
 ## groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|group_name|text|--|
+|name|string|--|
 
 ### Association
 - has_many :messages
@@ -60,8 +60,8 @@ Things you may want to cover:
 ## users_groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|users_id|references|null: false, foreign_key: true|
-|groups_id|references|null: false, foreign_key: true|
+|users|references|null: false, foreign_key: true|
+|groups|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
