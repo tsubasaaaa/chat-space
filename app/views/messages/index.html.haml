@@ -28,7 +28,7 @@
     .chat-main
       .main-header
         .main-header__left-box
-          %h2.main-header__left-box__current-group{data: {group_id: "886"}}
+          %h2.main-header__left-box__current-group
             aa
           %ul.main-header__left-box__member-list
             Member：
@@ -37,7 +37,7 @@
         = link_to root_path do
           .main-header__edit-btn Edit
       .messages
-        .message{data: {message_id: "2342"}}
+        .message
           .message__upper-info
             %p.message__upper-info__talker 菅谷翼
             %p.message__upper-info__date 2019/05/17(Fri) 19:21:09
@@ -51,4 +51,4 @@
             %label.input-box__image{for: "message_image"}
               %i.fa.fa-image
               %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
-          %input.submit-btn{data: { disable: { with: "Send"}}, name: "commit", type: "submit", value: "Send"}/
+          %input.submit-btn{name: "commit", type: "submit", value: "Send"}/
