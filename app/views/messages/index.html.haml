@@ -1,1 +1,54 @@
-
+%body
+  .flash-box
+  .wrapper
+    .chat-side
+      .side-header
+        .side-header__box
+          %p.side-header__box__user-name 菅谷翼
+          %ul.side-header__box__menu
+            %li.side-header__box__menu__new-group
+              = link_to root_path do
+                %i.fa.fa-edit
+            %li.side-header__box__menu__edit-user
+              = link_to root_path do
+                %i.fa.fa-cog
+      .groups
+        = link_to root_path do
+          .group
+            %p.group__group-name aa
+            %p.group__latest-message まだメッセージがありません
+        = link_to root_path do
+          .group
+            %p.group__group-name bb
+            %p.group__latest-message b
+        = link_to root_path do
+          .group
+            %p.group__group-name aa
+            %p.group__latest-message a
+    .chat-main
+      .main-header
+        .main-header__left-box
+          %h2.main-header__left-box__current-group
+            aa
+          %ul.main-header__left-box__member-list
+            Member：
+            %li.main-header__left-box__member-list__member aa
+            %li.main-header__left-box__member-list__member 菅谷翼
+        = link_to root_path do
+          .main-header__edit-btn Edit
+      .messages
+        .message
+          .message__upper-info
+            %p.message__upper-info__talker 菅谷翼
+            %p.message__upper-info__date 2019/05/17(Fri) 19:21:09
+          %p.message__text aaaaaa
+      .form
+        %form#new_message.new_message{accept: {charset: "UTF-8"}, action: "/groups/886/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "5XkQ8jzhnUNNDF7uIGzgNGPVXSzQVnq/xKqIXmvfIdxJf0IJMx/PIiz1+rkbz9XMR+j+eTYkgBmONiJgmCj+Cw=="}/
+          .input-box
+            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+            %label.input-box__image{for: "message_image"}
+              %i.fa.fa-image
+              %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
+          %input.submit-btn{name: "commit", type: "submit", value: "Send"}/
