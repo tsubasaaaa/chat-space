@@ -1,0 +1,76 @@
+body,html{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-side{
+  width: 300px;
+  background: #2f3e51;
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+  .side-header{
+  background: #253141;
+  height: 100&;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  &__box{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    &__user-name{
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 82px;
+      float: left;
+    }
+    &__menu{
+      line-height: 82px;
+      width:100px;
+      float: right;
+      display: flex;
+      &__new-group{
+        line-height: 82px;
+        float: right;
+        padding-left:50px;
+        .fa-edit{
+          color: #ffffff;
+        }
+      }
+      &__edit-user{
+        float: right;
+        .fa-cog{
+          color: #ffffff;
+        }
+      }
+    }
+    }
+  }
+  .group{
+    height: calc(100% - 82px);
+    margin: 0 20px;
+    &__group-name{
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffffff;
+      padding: 20px 20px 5px;
+    }
+    &__latest-message{
+      font-size: 11px;
+      font-weight: bold;
+      color: #ffffff;
+      padding: 0 20px 40px;
+    }
+  }
+}
