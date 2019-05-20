@@ -37,6 +37,7 @@
         = link_to root_path do
           .main-header__edit-btn Edit
       .messages
+        =render @messages
         .message
           .message__upper-info
             %p.message__upper-info__talker 菅谷翼
@@ -47,8 +48,9 @@
           %input{name: "utf8", type: "hidden", value: "✓"}/
           %input{name: "authenticity_token", type: "hidden", value: "5XkQ8jzhnUNNDF7uIGzgNGPVXSzQVnq/xKqIXmvfIdxJf0IJMx/PIiz1+rkbz9XMR+j+eTYkgBmONiJgmCj+Cw=="}/
           .input-box
-            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-            %label.input-box__image{for: "message_image"}
-              %i.fa.fa-image
-              %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
-          %input.submit-btn{name: "commit", type: "submit", value: "Send"}/
+            = form_for [@group, @message] do |f|
+              = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+              = f.label :image, class: 'input-box__image' do
+                = fa.fa-image 'picture-o', class: 'icon'
+                = f.file_field :image, class: 'input-box__image__file'
+            = f.submit 'Send', class: 'submit-btn'
