@@ -1,5 +1,6 @@
 .chat-group-form
   %h1 チャットグループ編集
+  = render partial: 'form', locals: { group: @group }
   %form#edit_chat_group_22.edit_chat_group{"accept-charset": "UTF-8", action: "/chat_groups/22", method: "post"}
     %input{name: "utf8", type: "hidden", value: "✓"}/
     %input{name: "_method", type: "hidden", value: "patch"}/
