@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   
   def edit
+    # @group = User.new(user_params)
   end
 
   def update
