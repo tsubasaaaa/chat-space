@@ -4,54 +4,73 @@
     .chat-side
       .side-header
         .side-header__box
-          %p.side-header__box__user-name 菅谷翼
+          %p.side-header__box__user-name
+            = current_user.name
           %ul.side-header__box__menu
             %li.side-header__box__menu__new-group
               = link_to new_group_path do
                 %i.fa.fa-edit
             %li.side-header__box__menu__edit-user
-              = link_to root_path do
+              = link_to edit_user_path(current_user) do
                 %i.fa.fa-cog
       .groups
-        = link_to root_path do
+        - current_user.groups.each do |group|
           .group
-            %p.group__group-name aa
-            %p.group__latest-message まだメッセージがありません
-        = link_to root_path do
-          .group
-            %p.group__group-name bb
-            %p.group__latest-message b
-        = link_to root_path do
-          .group
-            %p.group__group-name aa
-            %p.group__latest-message a
+            = link_to group_messages_path(group) do
+              .group__group-name
+                = group.name
+              .group__latest-message
+                = group.show_last_message
     .chat-main
       .main-header
         .main-header__left-box
           %h2.main-header__left-box__current-group
-            aa
+            = @group.name
           %ul.main-header__left-box__member-list
             Member：
-            %li.main-header__left-box__member-list__member 
-              = group.users.name
-            %li.main-header__left-box__member-list__member 菅谷翼
-        = link_to root_path do
+            %li.main-header__left-box__member-list__member
+              - @group.users.each do |group|
+                = group.name
+            -# %li.main-header__left-box__member-list__member 菅谷翼
+        = link_to edit_group_path(@group) do
           .main-header__edit-btn Edit
       .messages
         =render @messages
-        .message
-          .message__upper-info
-            %p.message__upper-info__talker 菅谷翼
-            %p.message__upper-info__date 2019/05/17(Fri) 19:21:09
-          %p.message__text aaaaaa
       .form
-        %form#new_message.new_message{accept: {charset: "UTF-8"}, action: "/groups/886/messages", enctype: "multipart/form-data", method: "post"}
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input{name: "authenticity_token", type: "hidden", value: "5XkQ8jzhnUNNDF7uIGzgNGPVXSzQVnq/xKqIXmvfIdxJf0IJMx/PIiz1+rkbz9XMR+j+eTYkgBmONiJgmCj+Cw=="}/
+        = form_for [@group, @message] do |f|
           .input-box
-            = form_for [@group, @message] do |f|
-              = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
-              = f.label :image, class: 'input-box__image' do
-                = fa.fa-image 'picture-o', class: 'icon'
-                = f.file_field :image, class: 'input-box__image__file'
+            = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+            = f.label :image, class: 'input-box__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'input-box__image__file'
             = f.submit 'Send', class: 'submit-btn'
+
+-# 自分で考えたやつ
+-# = fa.fa-image 'picture-o', class: 'icon'
+
+-# _messageに持っていく前の記述
+-# .message
+-#           .message__upper-info
+-#             %p.message__upper-info__talker 菅谷翼
+-#             %p.message__upper-info__date 2019/05/17(Fri) 19:21:09
+-#           %p.message__text aaaaaa
+
+-# formのなかに書かれていたよくわからないもの
+-# %form#new_message.new_message{accept: {charset: "UTF-8"}, action: "/groups/886/messages", enctype: "multipart/form-data", method: "post"}
+-#           %input{name: "utf8", type: "hidden", value: "✓"}/
+-#           %input{name: "authenticity_token", type: "hidden", value: "5XkQ8jzhnUNNDF7uIGzgNGPVXSzQVnq/xKqIXmvfIdxJf0IJMx/PIiz1+rkbz9XMR+j+eTYkgBmONiJgmCj+Cw=="}/
+
+
+-# グループに書いてあったコード
+-# = link_to root_path do
+-#           .group
+-#             %p.group__group-name aa
+-#             %p.group__latest-message まだメッセージがありません
+-#         = link_to root_path do
+-#           .group
+-#             %p.group__group-name bb
+-#             %p.group__latest-message b
+-#         = link_to root_path do
+-#           .group
+-#             %p.group__group-name aa
+-#             %p.group__latest-message a
