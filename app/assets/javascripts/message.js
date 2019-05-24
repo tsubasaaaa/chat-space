@@ -1,9 +1,6 @@
 $(function(){
   function buildHTML(message){
-    var insertImage = '';
-    if (message.image){
-      insertImage = `<img src="${message.image}">`;
-    }
+    var insertImage = message.image ? `<img src="${message.image}">` : '';
     var html = `<div class="message">
                   <div class="message__upper-info">
                     <div class="message__upper-info__talker">
