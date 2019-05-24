@@ -39,20 +39,15 @@
     }
   }
   .messages{
-    // background: #fafafa;
-    // margin-top: 65px;
-    // padding-bottom: 80px; 
     overflow: scroll;
     height: calc(100% - 162px);
     .message{
-      // height: 34px;
       width: 100%;
       padding: 23px 40px 0 40px;
       &__upper-info{
         font-size: 12px;
         display: flex;
         &__talker{
-          // float: left;
         }
         &__date{
           margin-left: 50px; 
