@@ -35,7 +35,7 @@
         = link_to edit_group_path(@group) do
           .main-header__edit-btn Edit
       .messages
-        =render @messages
+        = render @messages
       .form
         = form_for [@group, @message] do |f|
           .input-box

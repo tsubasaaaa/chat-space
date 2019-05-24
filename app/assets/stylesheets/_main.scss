@@ -6,12 +6,15 @@
   height: 100%;
   width: calc(100% - 300px);
   float: right;
+  background: #fafafa;
   .main-header{
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
     height: 82px;
+    width: 100%;
     border: #eeeeee;
+    background: #ffffff;
     &__left-box{
       float: left;
       padding-top: 20px;
@@ -36,16 +39,20 @@
     }
   }
   .messages{
+    // background: #fafafa;
+    // margin-top: 65px;
+    // padding-bottom: 80px; 
+    overflow: scroll;
     height: calc(100% - 162px);
-    background: #fafafa;
     .message{
-      height: 34px;
+      // height: 34px;
       width: 100%;
-      padding: 46px 40px 0 40px;
+      padding: 23px 40px 0 40px;
       &__upper-info{
         font-size: 12px;
+        display: flex;
         &__talker{
-          float: left;
+          // float: left;
         }
         &__date{
           margin-left: 50px; 
@@ -53,7 +60,7 @@
         }
       }
       &__text{
-        margin: 10px 0 40px 0;
+        margin: 10px 0 0 0;
       }
     }
   }
@@ -61,6 +68,7 @@
     height: 80px;
     background: gray;
     width: 100%;
+    bottom: 0;
     .input-box{
       padding: 15px 0 15px 40px;
       width: 100%;
@@ -93,4 +101,8 @@
       }
     }
   }
+}
+
+.notification{
+  position: fixed;
 }
