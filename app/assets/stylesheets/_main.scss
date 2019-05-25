@@ -5,7 +5,6 @@
 .chat-main {
   height: 100%;
   width: calc(100% - 300px);
-  float: right;
   background: #fafafa;
   .main-header{
     padding: 0 40px;
@@ -98,6 +97,3 @@
   }
 }
 
-.notification{
-  position: fixed;
-}
