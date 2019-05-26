@@ -45,8 +45,6 @@ $(function(){
   var reloadMessages = function() {
     group_id = $('.message__upper-info').data('group-id');
     last_message_id = $(".message").last().data('id');
-    // console.log(group_id)
-    console.log(last_message_id)
     $.ajax({
       url: '/api/messages',
       type: 'get',
@@ -54,11 +52,9 @@ $(function(){
       data: {last_message_id, group_id}
     })
     .done(function(messages) {
-      // console.log(messages)
       var insertHTML = '';
       if (messages.length !== 0) {
         messages.forEach(function(message){
-          console.log(message)
           insertHTML += buildHTML(message)
         });
         $('.messages').append(insertHTML)
