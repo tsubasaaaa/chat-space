@@ -1,22 +1,22 @@
 $(function(){
   function buildHTML(message){
     var insertImage = message.image ? `<img src="${message.image}">` : '';
-    var html = '<div class="message" data-id=' + message.id + '>' +
-                  '<div class="message__upper-info">' +
-                    '<div class="message__upper-info__talker">' +
-                      message.name +
-                    '</div>' +
-                    '<div class="message__upper-info__date">' +
-                      message.created_at +
-                    '</div>' +
-                  '</div>' +
-                  '<div class="meesage__text">' +
-                      '<p class="lower-message__content">' +
-                        message.content +
-                      '</p>' +
-                      insertImage +
-                  '</div>' +
-                '</div>'
+    var html = `<div class="message" data-id= ${message.id} >
+                  <div class="message__upper-info">
+                    <div class="message__upper-info__talker">
+                      ${message.name}
+                    </div>
+                    <div class="message__upper-info__date">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="meesage__text">
+                      <p class="lower-message__content">
+                        ${message.content}
+                      </p>
+                      ${insertImage}
+                  </div>
+                </div>`
         return html;
   }
   $('#new_message').on('submit', function(e){
@@ -43,14 +43,18 @@ $(function(){
     })
   })
   var reloadMessages = function() {
-    last_message_id = $(".message").last().data();
+    group_id = $('.message__upper-info').data('group-id');
+    last_message_id = $(".message").last().data('id');
+    // console.log(group_id)
+    console.log(last_message_id)
     $.ajax({
       url: '/api/messages',
       type: 'get',
       dataType: 'json',
-      data: last_message_id
+      data: {last_message_id, group_id}
     })
     .done(function(messages) {
+      // console.log(messages)
       var insertHTML = '';
       if (messages.length !== 0) {
         messages.forEach(function(message){
