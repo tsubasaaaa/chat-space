@@ -42,7 +42,6 @@ $(function(){
       alert('errorだよん');
     })
   })
-
   var reloadMessages = function() {
     last_message_id = $(".message").last().data();
     $.ajax({
@@ -55,6 +54,7 @@ $(function(){
       var insertHTML = '';
       if (messages.length !== 0) {
         messages.forEach(function(message){
+          console.log(message)
           insertHTML += buildHTML(message)
         });
         $('.messages').append(insertHTML)
@@ -62,8 +62,10 @@ $(function(){
       }
     })
     .fail(function() {
-      alert('error');
+      alert('errorだよ〜');
     });
   };
-  setInterval(reloadMessages, 5000);
+  if (location.pathname.match(/\/groups\/\d+\/messages/)){
+    setInterval(reloadMessages, 5000);
+   }
 });
